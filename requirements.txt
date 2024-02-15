@@ -5,4 +5,4 @@ seaborn
 sweetviz
 xgboost
 catboost
-pickle
+django<5
