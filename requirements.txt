@@ -6,3 +6,5 @@ sweetviz
 xgboost
 catboost
 django<5
+feature-engine
+imbalanced-learn
