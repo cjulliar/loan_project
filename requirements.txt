@@ -1,10 +1,15 @@
-pandas==2.2.0
+pandas
 scikit-learn
 matplotlib
 seaborn
 sweetviz
 xgboost
 catboost
-django<5
 feature-engine
 imbalanced-learn
+
+django<5
+django-dotenv<2
+django-livereload-server<1
+django-widget-tweaks<2
+requests<3
