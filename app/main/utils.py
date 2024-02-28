@@ -17,8 +17,39 @@ state_abreviations = [
 
 state_list = [[state_names[i], state_abreviations[i]] for i in len(state_names)]
 
+# Entreprise avec moins de deux ans d'existence
+new_exist_list = [
+    ["Oui", "New"],
+    ["Non", "Existing"],
+    ["Non défini", "0"],
+]
+
 urban_rural_list = [
-    ["Urban", "Urban"],
-    ["Rural", "Rural"],
-    ["Other", "Other"],
+    ["Milieu urbain", "Urban"],
+    ["Milieu rural", "Rural"],
+    ["Non défini", "Other"],
+]
+
+# Ligne de crédit renouvelable
+rev_line_list = [
+    ["Oui", "Y"],
+    ["Non", "N"],
+    ["Non défini", "0"]
+]
+
+# Application en une page correspond à oui
+low_doc_list = [
+    ["Oui", "Y"],
+    ["Non", "N"],
+    ["Non défini", "0"]
+]
+
+real_estate_list = [
+    ["Oui", "Y"],
+    ["Non", "N"],
+]
+
+mis_status = [
+    ["Incapacité de rembourser", 0],
+    ["Capable de rembourser", 1]
 ]

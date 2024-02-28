@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block css %}{% endblock css %}
+    {% block script %}{% endblock script %}
+</head>
+
+<body>
+
+    {% include "includes/header.html" %}
+
+    <main>
+
+        {% if message %}
+            <div>
+                <p>{{ message }}</p>
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock content %}
+
+    </main>
+
+    {% include "includes/footer.html" %}
+    
+</body>
+
+</html>
