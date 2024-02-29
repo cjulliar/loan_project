@@ -15,41 +15,41 @@ state_abreviations = [
     "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
 ]
 
-state_list = [[state_names[i], state_abreviations[i]] for i in len(state_names)]
+STATE_CHOICES = [(state_abreviations[i], state_names[i]) for i in range(len(state_names))]
 
 # Entreprise avec moins de deux ans d'existence
-new_exist_list = [
-    ["Oui", "New"],
-    ["Non", "Existing"],
-    ["Non défini", "0"],
+NEW_EXIST_CHOICES = [
+    ("New", "Oui"),
+    ("Existing", "Non"),
+    ("0", "Non défini"),
 ]
 
-urban_rural_list = [
-    ["Milieu urbain", "Urban"],
-    ["Milieu rural", "Rural"],
-    ["Non défini", "Other"],
+URBAN_RURAL_CHOICES = [
+    ("Urban", "Milieu urbain"),
+    ("Rural", "Milieu rural"),
+    ("0", "Non défini"),
 ]
 
 # Ligne de crédit renouvelable
-rev_line_list = [
-    ["Oui", "Y"],
-    ["Non", "N"],
-    ["Non défini", "0"]
+REV_LINE_CHOICES = [
+    ("Y", "Oui"),
+    ("N", "Non"),
+    ("0", "Non défini")
 ]
 
 # Application en une page correspond à oui
-low_doc_list = [
-    ["Oui", "Y"],
-    ["Non", "N"],
-    ["Non défini", "0"]
+LOW_DOC_CHOICES = [
+    ("Y", "Oui"),
+    ("N", "Non"),
+    ("0", "Non défini")
 ]
 
-real_estate_list = [
-    ["Oui", "Y"],
-    ["Non", "N"],
+REAL_ESTATE_CHOICES = [
+    ("Y", "Oui"),
+    ("N", "Non")
 ]
 
-mis_status = [
-    ["Incapacité de rembourser", 0],
-    ["Capable de rembourser", 1]
+MIS_STATUS_CHOICES = [
+    (0, "Incapacité de rembourser"),
+    (1, "Capable de rembourser")
 ]
