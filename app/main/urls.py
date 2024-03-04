@@ -8,6 +8,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('companies/', views.companies, name='companies'),
     path('company/<str:nameCompany>', views.company, name='company'),
+    path("create_company", views.create_company, name="create_company"),
     path('loan_history/', views.loan_history, name='loan_history'),
     path('loan_request/', views.loan_request, name='loan_request'),
 ]

@@ -14,12 +14,11 @@
     <nav>
         <div>
             {% if user.is_authenticated %}
-                    <a href="{{ request_url }}">Faire une demande de prêt</a>
-                    <a href="{{ history_url }}">Historique des demandes</a>
-                    <a href="{{ companies_url }}">Liste des enterprises</a>
+                <a href="{{ request_url }}">Faire une demande de prêt</a>
+                <a href="{{ history_url }}">Historique des demandes</a>
+                <a href="{{ companies_url }}">Liste des enterprises</a>
             {% endif %}
-                    <a href="{{ about_url }}">A propos</a>
-            {% endif %}
+                <a href="{{ about_url }}">A propos</a>
         </div>
         <div>
             {% if user.is_authenticated %}

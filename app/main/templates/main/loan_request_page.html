@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Demande de prêt{% endblock title %}
+
+{% block content %}
+
+{% if form %}
+    <div>
+        <a href="{% url "main:create_company" %}">Si l'entreprise n'est pas présente parmi les choix, veuillez d'abord l'enregistrer en vous rendant sur cette page.</a>
+        <form method="post" action="{% url "main:loan_request" %}">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Valider la demande de prêt</button>
+        </form>
+    </div>
+{% endif %}
+
+{% if application %}
+    <div>
+        <p>Entreprise : {{ application.company }}</p>
+        <p>Banque accordant le prêt : {{ application.bank }}</p>
+        <p>Montant du prêt accordé par la banque : {{ application.gr_appv }}$</p>
+        <p>Montant du prêt garanti par la SBA : {{ application.sba_appv }}$</p>
+        <p>Durée du prêt : {{ application.term }} mois</p>
+        <p>Prédiction sur la capacité de l'entreprise à rembourser : {{ application.status }}</p>
+    </div>
+{% endif %}
+
+{% endblock content %}

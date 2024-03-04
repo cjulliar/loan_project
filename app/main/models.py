@@ -20,7 +20,7 @@ class Company(models.Model):
     urban_rural = models.CharField(max_length=5, choices=URBAN_RURAL_CHOICES, blank=False, null=False)
 
     def __str__(self):
-        return self.name
+        return (f"{self.name}, {self.city}, {self.state}")
 
 
 class Request(models.Model):
@@ -39,8 +39,8 @@ class Request(models.Model):
     sba_appv = models.PositiveIntegerField(blank=False, null=False)
     # zip = models.PositiveIntegerField() 
     # naics = models.PositiveIntegerField() 
-    real_estate = models.BooleanField(choices=REAL_ESTATE_CHOICES, blank=False, null=False)
-    status = models.BooleanField(choices=MIS_STATUS_CHOICES, blank=False, null=False)
+    real_estate = models.CharField(max_length=1, choices=REAL_ESTATE_CHOICES, blank=False, null=False)
+    status = models.CharField(max_length=1, choices=MIS_STATUS_CHOICES, blank=True, null=True)
 
     def company_data(self, column):
         company = self.company

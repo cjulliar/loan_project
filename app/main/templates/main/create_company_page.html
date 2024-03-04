@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Demande de prêt{% endblock title %}
+
+{% block content %}
+
+<div>
+    <form method="post" action="{% url "main:create_company" %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enregistrer l'entreprise</button>
+    </form>
+</div>
+
+{% endblock content %}

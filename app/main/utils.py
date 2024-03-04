@@ -1,3 +1,7 @@
+import json
+import os
+from requests import Request, Session
+
 state_names = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
     "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -50,6 +54,44 @@ REAL_ESTATE_CHOICES = [
 ]
 
 MIS_STATUS_CHOICES = [
-    (0, "Incapacité de rembourser"),
-    (1, "Capable de rembourser")
+    ("0", "Incapacité de rembourser"),
+    ("1", "Capable de rembourser")
 ]
+
+
+def api_call(application):
+
+    url = os.getenv("API_URL")
+
+    headers = {
+        "Accepts": "application/json",
+    }
+
+    session = Session()
+    session.headers.update(headers)
+
+    company = application["company"]
+
+    features = [
+        company["state"],
+        application["bank"],
+        application["bank_state"],
+        application["term"],
+        company["num_employees"],
+        application["new_exist"],
+        company["franchise_code"],
+        company["urban_rural"],
+        application["rev_line_cr"],
+        application["low_doc"],
+        application["gr_appv"],
+        application["sba_appv"],
+        company["zip"],
+        company["naics"],
+        application["real_estate"],
+    ]
+
+    features = json.dumps(features)
+    response = session.post(url, data=features)
+    result = json.loads(response.text)
+
+    return result

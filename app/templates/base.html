@@ -19,9 +19,11 @@
 
     <main>
 
-        {% if message %}
+        {% if messages %}
             <div>
-                <p>{{ message }}</p>
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
             </div>
         {% endif %}
 
