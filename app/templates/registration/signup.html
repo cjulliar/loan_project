@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Créer un compte{% endblock title %}
+
+{% block content %}
+
+{% block content %}
+
+<form method="post" action="{% url "signup" %}">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Créer un compte</button>
+</form>
+
+{% endblock content %}

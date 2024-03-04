@@ -11,13 +11,16 @@ class User(AbstractUser):
 
 class Company(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
-    city = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=False, null=False)
     state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=False, null=False)
     zip = models.PositiveIntegerField(validators=[MaxValueValidator(99)], blank=False, null=False)
     naics = models.PositiveIntegerField(validators=[MaxValueValidator(99)], blank=False, null=False)
     num_employees = models.PositiveIntegerField(blank=False, null=False)
     franchise_code = models.PositiveIntegerField(validators=[MaxValueValidator(99999)], blank=False, null=False)
     urban_rural = models.CharField(max_length=5, choices=URBAN_RURAL_CHOICES, blank=False, null=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Request(models.Model):
