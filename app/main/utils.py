@@ -61,7 +61,7 @@ MIS_STATUS_CHOICES = [
 
 def api_call(application):
 
-    url = os.getenv("API_URL")
+    url = "http://0.0.0.0:8042/predict"
 
     headers = {
         "Accepts": "application/json",
@@ -72,25 +72,25 @@ def api_call(application):
 
     company = application["company"]
 
-    features = [
-        company["state"],
-        application["bank"],
-        application["bank_state"],
-        application["term"],
-        company["num_employees"],
-        application["new_exist"],
-        company["franchise_code"],
-        company["urban_rural"],
-        application["rev_line_cr"],
-        application["low_doc"],
-        application["gr_appv"],
-        application["sba_appv"],
-        company["zip"],
-        company["naics"],
-        application["real_estate"],
-    ]
+    feature_inputs = {
+    'State': company["state"],
+    'Bank': application["bank"],
+    'BankState': application["bank_state"],
+    'Term': application["term"],
+    'NoEmp': company["num_employees"],
+    'NewExist': application["new_exist"],
+    'FranchiseCode': company["franchise_code"],
+    'UrbanRural': company["urban_rural"],
+    'RevLineCr': application["rev_line_cr"],
+    'LowDoc': application["low_doc"],
+    'GrAppv': application["gr_appv"],
+    'SBA_Appv': application["sba_appv"],
+    'Zip2': company["zip"],
+    'NAICS2': company["naics"],
+    'RealEstate': application["real_estate"]
+    }
 
-    features = json.dumps(features)
+    features = json.dumps(feature_inputs)
     response = session.post(url, data=features)
     result = json.loads(response.text)
 

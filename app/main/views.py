@@ -1,8 +1,12 @@
+import json
+from requests import Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from requests import Request
+
 from .forms import CompanyForm, RequestForm
 from .utils import api_call
 
@@ -30,7 +34,7 @@ def create_company(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, f"L'entreprise {form.cleaned_data["name"]} est enregistré, vous pouvez maintenant la sélectionner.")
+            messages.success(request, f"L'entreprise {form.cleaned_data['name']} est enregistré, vous pouvez maintenant la sélectionner.")
             return HttpResponseRedirect(reverse("main:loan_request"))
         
         else:
@@ -54,13 +58,48 @@ def loan_request(request):
         if form.is_valid():
 
             try:
-                result = api_call(form.cleaned_data)
+                application = form.cleaned_data
+
+                url = "http://0.0.0.0:8042/predict"
+
+                headers = {
+                    "Accepts": "application/json",
+                }
+
+                session = Session()
+                session.headers.update(headers)
+
+                company = application["company"]
+
+                feature_inputs = {
+                'State': company.state,
+                'Bank': application["bank"],
+                'BankState': application["bank_state"],
+                'Term': application["term"],
+                'NoEmp': company.num_employees,
+                'NewExist': application["new_exist"],
+                'FranchiseCode': str(company.franchise_code),
+                'UrbanRural': company.urban_rural,
+                'RevLineCr': application["rev_line_cr"],
+                'LowDoc': application["low_doc"],
+                'GrAppv': application["gr_appv"],
+                'SBA_Appv': application["sba_appv"],
+                'Zip2': str(company.zip),
+                'NAICS2': str(company.naics),
+                'RealEstate': application["real_estate"]
+                }
+
+                features = json.dumps(feature_inputs)
+                response = session.post(url, data=features)
+                result = json.loads(response.text)
+
+                # result = api_call(form.cleaned_data)
                 application = form.save()
                 application.status = result
                 application.save()
 
-            except:
-                messages.error(request, "Problème survenu pendant la prédiction, veuillez réessayer.")
+            except (ConnectionError, Timeout, TooManyRedirects, KeyError) as e:
+                messages.error(request, f"Problème survenu pendant la prédiction ({e}), veuillez réessayer.")
                 return HttpResponseRedirect(reverse("main:loan_request"))          
 
             return render(request, "main/loan_request_page.html", {
