@@ -23,7 +23,12 @@
         <p>Montant du prêt accordé par la banque : {{ application.gr_appv }}$</p>
         <p>Montant du prêt garanti par la SBA : {{ application.sba_appv }}$</p>
         <p>Durée du prêt : {{ application.term }} mois</p>
-        <p>Prédiction sur la capacité de l'entreprise à rembourser : {{ application.status }}</p>
+        <p>Prédiction sur la capacité de l'entreprise à rembourser le prêt :</p>
+        {% if application.status == 0 %}
+            <p>Le modèle prédit que l'entreprise ne serait pas en mesure de rembourser le prêt.</p>
+        {% elif application.status == 1 %}
+            <p>Le modèle prédit que l'entreprise serait en mesure de rembourser le prêt.</p>
+        {% endif %}
     </div>
 {% endif %}
 
