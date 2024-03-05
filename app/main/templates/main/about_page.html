@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+
+{% block content %}
+
+<p>Compréhension du Projet :</P>
+<p>En tant que Data Scientist pour le PSBA, notre mission consiste à évaluer la capacité des entreprises à rembourser
+     les prêts garantis par la SBA. Il est impératif d'éviter tout "data leaking" en ne utilisant que les informations
+      disponibles avant la prise de décision.</p>
+
+<p>Processus du Projet :</p>
+<p>Partie 1 : Nettoyage, EDA et Modélisation</p>
+<ul>
+    <li>Nettoyage des Données : Élimination des valeurs manquantes, gestion des outliers, etc.
+    </li>
+    <li>Analyse et Compréhension des Données : Analyse univariée, bivariée, tests statistiques.
+    </li>
+    <li>Préparation des Données pour le Modèle : Pré-traitement, sélection des features, feature engineering.
+    </li>
+    <li>Modélisation : Utilisation du modèle de classification CatBoost avec explication du fonctionnement.
+    </li>
+</ul>
+
+<p>Partie 2 : Mise en Production</p>
+<ul>
+    <li>Utilisation de FastAPI : Rendre le modèle accessible via une API.
+    </li>
+    <li>Développement d'une Interface avec Django : Création d'une application web pour consommer l'API.
+    </li>
+    <li>Composition de l'Application Web : API (FastAPI) pour servir le modèle & interface utilisateur (Django) pour 
+        consommer l'API.
+    </li>
+</ul>
+<p>Cadre Technique :</p>
+<p>Veuillez consulter les ressources pour plus d'informations sur le cadre technique.</p>
+
+<p>Nous sommes ravis de contribuer à soutenir les petites entreprises et à renforcer l'impact positif sur l'économie. 
+    Explorez notre site pour en savoir plus sur notre approche et nos résultats.</p>
+
+<p>N'hésitez pas à nous contacter pour toute question ou suggestion.</p>
+
+{% endblock content %}
