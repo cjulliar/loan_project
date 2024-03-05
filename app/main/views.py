@@ -9,7 +9,9 @@ from django.urls import reverse
 
 from .forms import CompanyForm, RequestForm
 from .utils import api_call
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView
+from .models import Company
 
 def home(request):
     return render(request, 'main/home_page.html')
@@ -19,14 +21,18 @@ def about(request):
     return render(request, 'main/about_page.html')
 
 
-def companies(request):
-    return render(request, 'main/companies_page.html')
+# def companies(request):
+#     return render(request, 'main/companies_page.html')
+class CompaniesListView(LoginRequiredMixin, ListView):
+    model = Company
+    template_name = "main/companies_page.html"
 
-
-def company(request, nameCompany):
-    context = {"nameCompany" : nameCompany}
-    return render(request, 'main/company_page.html', context=context)
-
+# def company(request, nameCompany):
+#     context = {"nameCompany" : nameCompany}
+#     return render(request, 'main/company_page.html', context=context)
+class CompanyDetailView(LoginRequiredMixin, DetailView):
+    model = Company
+    template_name = "main/company_page.html"
 
 def create_company(request):
     if request.method == "POST":

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h2>Entreprises:</h2><br>
+    <ul> 
+        {% for company in object_list %}
+            <li>
+                <a href="{% url 'main:company' pk=company.id %}">
+                    {{company.name}} - {{company.get_state_display}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul><br>
+{% endblock %}

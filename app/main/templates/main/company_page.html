@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul> 
+        <li>Nom de l'entreprise:  {{company.name}}</li>
+        <li>Ville du siège:       {{company.city}}</li>
+        <li>Etat du siège:        {{company.get_state_display}}</li>
+        <li>Code postal du siège: {{company.zip}}</li>
+        <li>Code du secteur d'activité: {{company.naics}}</li>
+        <li>Nombre d'employés:    {{company.num_employees}}</li>
+        <li>Franchise code:       {{company.franchise_code}}</li>
+        <li>Type d'environnement: {{company.get_urban_rural_display}}</li>
+
+    </ul><br>
+{% endblock %}
