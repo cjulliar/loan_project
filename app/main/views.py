@@ -30,7 +30,7 @@ def create_company(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, f"L'entreprise {form.cleaned_data["name"]} est enregistré, vous pouvez maintenant la sélectionner.")
+            messages.success(request, f"L'entreprise {form.cleaned_data['name']} est enregistré, vous pouvez maintenant la sélectionner.")
             return HttpResponseRedirect(reverse("main:loan_request"))
         
         else:

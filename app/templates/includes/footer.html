@@ -1,0 +1,25 @@
+{% load static %}
+
+{% url "main:home" as home_url %}
+{% url "main:loan_request" as request_url %}
+{% url "main:history" as history_url %}
+{% url "main:companies" as companies_url %}
+{% url "main:about" as about_url %}
+<div class="flex flex-col min-h-screen">
+
+    <footer class="mt-auto bg-gray-800 text-white p-4">
+
+        <nav>
+            <div>
+                <p> Quentin Lavallée & Cyril Julliard</p>
+            </div>
+            <div>
+                <a href="{{ request_url }}">Requête</a>
+                <a href="{{ history_url }}">Historique</a>
+                <a href="{{ companies_url }}">Company</a>
+                <a href="{{ about_url }}">A propos</a>
+            </div>
+        </nav>
+
+    </footer>
+</div>
