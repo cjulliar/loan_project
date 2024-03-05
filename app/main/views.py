@@ -92,8 +92,8 @@ def loan_request(request):
                 features = json.dumps(feature_inputs)
                 response = session.post(url, data=features)
                 result = json.loads(response.text)
+                result = result["category"]
 
-                # result = api_call(form.cleaned_data)
                 application = form.save()
                 application.status = result
                 application.save()
