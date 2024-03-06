@@ -17,3 +17,4 @@ requests<3
 scikit-learn<2
 fastapi<1
 uvicorn<1
+whitenoise<7

@@ -6,11 +6,11 @@
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-400 text-white">
-                    <th class="py-2 px-4">Date</th>
-                    <th class="py-2 px-4">Nom de l'entreprise</th>
-                    <th class="py-2 px-4">Ville de l'entreprise</th>
-                    <th class="py-2 px-4">Nouvelle entreprise</th>
-                    <th class="py-2 px-4">Banque</th>
+                    <th class="tab_style">Date</th>
+                    <th class="tab_style">Nom de l'entreprise</th>
+                    <th class="tab_style">Ville de l'entreprise</th>
+                    <th class="tab_style">Nouvelle entreprise</th>
+                    <th class="tab_style">Banque</th>
                     <th class="py-2 px-4">État de la banque</th>
                     <th class="py-2 px-4">Durée du prêt</th>
                     <th class="py-2 px-4">Crédit renouvelable</th>
@@ -24,9 +24,9 @@
             <tbody>
                 {% for request in object_list %}
                     <tr class="{% cycle 'bg-white' 'bg-gray-200'  %}">
-                        <td class="py-2 px-4">{{ request.formatted_date }}</td>
-                        <td class="py-2 px-4">{{ request.company.name }}</td>
-                        <td class="py-2 px-4">{{ request.company.city }}</td>
+                        <td class="tab_style">{{ request.formatted_date }}</td>
+                        <td class="tab_style">{{ request.company.name }}</td>
+                        <td class="tab_style">{{ request.company.city }}</td>
                         <td class="py-2 px-4">{{ request.get_new_exist_display }}</td>
                         <td class="py-2 px-4">{{ request.bank }}</td>
                         <td class="py-2 px-4">{{ request.get_bank_state_display }}</td>
