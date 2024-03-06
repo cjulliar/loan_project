@@ -8,28 +8,31 @@
 {% url "login" as login_url %}
 {% url "logout" as logout_url %}
 
-<header class="bg-red-300">
+<header class="py-4">
+    <div class="container mx-auto flex flex-col justify-between">
 
-    <div>
-        <a href="{{ home_url }}"><img src="{% static "images/logo.png" %}" alt="Logo"></a>
+        <div class="border-b border-gray">
+            <a href="{{ home_url }}"><img src="{% static "images/logo.png" %}" alt="Logo"></a>
+        </div>
+
+        <nav class="flex flex-col md:flex-row justify-evenly mt-4 md:mt-0 border-b border-gray py-2">
+            <div class="flex flex-col md:flex-row md:items-center">
+                {% if user.is_authenticated %}
+                    <a href="{{ request_url }}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">Faire une demande de prêt</a>
+                    <a href="{{ history_url }}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">Historique des demandes</a>
+                    <a href="{{ companies_url }}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">Liste des enterprises</a>
+                {% endif %}
+                    <a href="{{ about_url }}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">A propos</a>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center">
+                {% if user.is_authenticated %}
+                    <a href="{{logout_url}}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">Se déconnecter</a>
+                {% else %}
+                    <a href="" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-4">Créer un compte</a>
+                    <a href="{{login_url}}" class="my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6">Se connecter</a>
+                {% endif %}
+            </div>
+        </nav>
+
     </div>
-    <nav>
-        <div>
-            {% if user.is_authenticated %}
-                <a href="{{ request_url }}">Faire une demande de prêt</a>
-                <a href="{{ history_url }}">Historique des demandes</a>
-                <a href="{{ companies_url }}">Liste des enterprises</a>
-            {% endif %}
-                <a href="{{ about_url }}">A propos</a>
-        </div>
-        <div>
-            {% if user.is_authenticated %}
-                <a href="{{logout_url}}">Se déconnecter</a>
-            {% else %}
-                <a href="">Créer un compte</a>
-                <a href="{{login_url}}">Se connecter</a>
-            {% endif %}
-        </div>
-    </nav>
-
 </header>
