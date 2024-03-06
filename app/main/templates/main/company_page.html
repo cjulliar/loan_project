@@ -12,4 +12,14 @@
         <li>Type d'environnement: {{company.get_urban_rural_display}}</li>
 
     </ul><br>
+
+    <h3>Requests</h3>
+    <ul>
+        {% for request in requests %}
+            <li>{{ request.company }}</li>
+            <li>{{ request.date }}</li>
+            <li>{{ request.bank }}</li>
+            <!-- Afficher d'autres détails de la Request -->
+        {% endfor %}
+    </ul>
 {% endblock %}
