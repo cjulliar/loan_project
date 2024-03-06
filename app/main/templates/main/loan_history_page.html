@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 class="text-2xl font-bold mt-4 mb-2">Requests</h3>
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-400 text-white">
+                    <th class="py-2 px-4">Date</th>
+                    <th class="py-2 px-4">Nom de l'entreprise</th>
+                    <th class="py-2 px-4">Ville de l'entreprise</th>
+                    <th class="py-2 px-4">Nouvelle entreprise</th>
+                    <th class="py-2 px-4">Banque</th>
+                    <th class="py-2 px-4">État de la banque</th>
+                    <th class="py-2 px-4">Durée du prêt</th>
+                    <th class="py-2 px-4">Crédit renouvelable</th>
+                    <th class="py-2 px-4">Demande faite en 1 page</th>
+                    <th class="py-2 px-4">Montant accordé par SBA</th>
+                    <th class="py-2 px-4">Montant accordé par Banque</th>
+                    <th class="py-2 px-4">Lié à l'immobilier</th>
+                    <th class="py-2 px-4">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in object_list %}
+                    <tr class="{% cycle 'bg-white' 'bg-gray-200'  %}">
+                        <td class="py-2 px-4">{{ request.formatted_date }}</td>
+                        <td class="py-2 px-4">{{ request.company.name }}</td>
+                        <td class="py-2 px-4">{{ request.company.city }}</td>
+                        <td class="py-2 px-4">{{ request.get_new_exist_display }}</td>
+                        <td class="py-2 px-4">{{ request.bank }}</td>
+                        <td class="py-2 px-4">{{ request.get_bank_state_display }}</td>
+                        <td class="py-2 px-4">{{ request.term }}</td>
+                        <td class="py-2 px-4">{{ request.get_rev_line_cr_display }}</td>
+                        <td class="py-2 px-4">{{ request.get_low_doc_display }}</td>
+                        <td class="py-2 px-4">{{ request.sba_appv }}</td>
+                        <td class="py-2 px-4">{{ request.gr_appv }}</td>
+                        <td class="py-2 px-4">{{ request.get_real_estate_display }}</td>
+                        <td class="py-2 px-4">{{ request.get_status_display }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

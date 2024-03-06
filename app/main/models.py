@@ -45,3 +45,6 @@ class Request(models.Model):
     def company_data(self, column):
         company = self.company
         return company[column]
+    
+    def formatted_date(self):
+        return self.date.strftime('%d/%m/%Y')
