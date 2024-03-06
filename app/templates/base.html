@@ -9,18 +9,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                  colors: {
+                    blue: '#002e6d',
+                    red: '#cc0000',
+                    gray: '#969696',
+                    white: '#ffffff',
+                    darkgray: '#686868',
+                  },
+                  fontFamily: {
+                    sans: ['Source Sans Pro', 'sans-serif'],
+                  },
+                },
+              },
+        }
+    </script>
+    <!-- <link rel="stylesheet" href="{% static "css/output.css" %}"> -->
     {% block css %}{% endblock css %}
     {% block script %}{% endblock script %}
 </head>
 
-<body>
+<body class="font-sans bg-white text-black">
 
     {% include "includes/header.html" %}
 
-    <main>
+    <main class="container mx-auto px-4">
 
         {% if messages %}
-            <div>
+            <div class="px-4 py-2 mb-4 rounded-md border border-blue">
                 {% for message in messages %}
                     <p>{{ message }}</p>
                 {% endfor %}
