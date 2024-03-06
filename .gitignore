@@ -321,3 +321,5 @@ node_modules
 package-lock.json
 package.json
 fonts
+
+app/static/css/output.css
