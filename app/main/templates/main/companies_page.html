@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-    <h2>Entreprises:</h2><br>
-    <ul> 
-        {% for company in object_list %}
-            <li>
-                <a href="{% url 'main:company' pk=company.id %}">
-                    {{company.name}} - {{company.get_state_display}} 
-                {% comment %} <a href="/funct/{{funct.id}}"> {% endcomment %}
-                {% comment %} <a"href="{% url "company-detail" pk=company.id %}"> {% endcomment %}
-                    {% comment %} {{ company.name }} {% endcomment %}
-                </a>
-            </li>
-        {% endfor %}
-    </ul><br>
+    <div class="bg-white p-6">
+        <h2 class="text-blue-800 text-2xl font-bold mb-4">Entreprises :</h2>
+        
+        <ul class="list-disc ml-6">
+            {% for company in object_list %}
+                <li class="mb-2">
+                    <a href="{% url 'main:company' pk=company.id %}" class="hover:text-blue-600 hover:underline">
+                        {{ company.name }} - {{ company.get_state_display }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

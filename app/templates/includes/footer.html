@@ -2,22 +2,24 @@
 
 {% url "main:home" as home_url %}
 {% url "main:loan_request" as request_url %}
-{% url "main:history" as history_url %}
+{% url "main:loan_history" as history_url %}
 {% url "main:companies" as companies_url %}
 {% url "main:about" as about_url %}
-<div class="flex flex-col min-h-screen">
 
-    <footer class="mt-auto bg-gray-800 text-white p-4">
+<div class="flex-shrink-0">
 
-        <nav>
-            <div>
-                <p> Quentin Lavallée & Cyril Julliard</p>
+
+    <footer class="bg-gray-200 p-4">
+
+        <nav class="flex justify-between items-center">
+            <div class="flex space-x-4">
+                <a href="{{ request_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Requête</a>
+                <a href="{{ history_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Historique</a>
+                <a href="{{ companies_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Company</a>
+                <a href="{{ about_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">À propos</a>
             </div>
             <div>
-                <a href="{{ request_url }}">Requête</a>
-                <a href="{{ history_url }}">Historique</a>
-                <a href="{{ companies_url }}">Company</a>
-                <a href="{{ about_url }}">A propos</a>
+                <p class="text-base">Quentin Lavallée & Cyril Julliard</p>
             </div>
         </nav>
 
