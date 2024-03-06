@@ -9,6 +9,6 @@ urlpatterns = [
     path('companies/', views.CompaniesListView.as_view(), name='companies'),
     path('company/<int:pk>', views.CompanyDetailView.as_view(), name='company'),
     path("create_company", views.create_company, name="create_company"),
-    path('loan_history/', views.loan_history, name='loan_history'),
+    path('loan_history/', views.LoanHistoryListView.as_view(), name='loan_history'),
     path('loan_request/', views.loan_request, name='loan_request'),
 ]

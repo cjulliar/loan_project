@@ -34,19 +34,14 @@ class CompaniesListView(LoginRequiredMixin, ListView):
 # class CompanyDetailView(LoginRequiredMixin, DetailView):
 #     model = Company
 #     template_name = "main/company_page.html"
-    
 class CompanyDetailView(LoginRequiredMixin, DetailView):
     model = Company
     template_name = "main/company_page.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Récupérer la Company actuelle
         company = context['object']
-        # Ajouter la Company au contexte
         context['company'] = company
-        # Récupérer les Request associées à la Company
         requests = Request.objects.filter(company=company)
-        # Ajouter les Request au contexte
         context['requests'] = requests
         return context
 
@@ -69,9 +64,11 @@ def create_company(request):
         })
 
 
-def loan_history(request):
-    return render(request, 'main/loan_history_page.html')
-
+# def loan_history(request):
+#     return render(request, 'main/loan_history_page.html')
+class LoanHistoryListView(LoginRequiredMixin, ListView):
+    model = Request
+    template_name = "main/loan_history_page.html"
 
 def loan_request(request):
     if request.method == "POST":

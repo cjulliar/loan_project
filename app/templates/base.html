@@ -16,9 +16,12 @@
                   colors: {
                     blue: '#002e6d',
                     red: '#cc0000',
-                    gray: '#969696',
+                    gray: {
+                        200:'c1c1c1',
+                        400:'#969696',
+                        800:'#686868'
+                    }
                     white: '#ffffff',
-                    darkgray: '#686868',
                   },
                   fontFamily: {
                     sans: ['Source Sans Pro', 'sans-serif'],
@@ -32,11 +35,11 @@
     {% block script %}{% endblock script %}
 </head>
 
-<body class="font-sans bg-white text-black">
+<body class="font-sans bg-white text-black  flex flex-col min-h-screen">
 
     {% include "includes/header.html" %}
 
-    <main class="container mx-auto px-4">
+    <main class="container mx-auto px-4 flex-grow">
 
         {% if messages %}
             <div class="px-4 py-2 mb-4 rounded-md border border-blue">
