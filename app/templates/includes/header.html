@@ -2,13 +2,13 @@
 
 {% url "main:home" as home_url %}
 {% url "main:loan_request" as request_url %}
-{% url "main:history" as history_url %}
+{% url "main:loan_history" as history_url %}
 {% url "main:companies" as companies_url %}
 {% url "main:about" as about_url %}
 {% url "login" as login_url %}
 {% url "logout" as logout_url %}
 
-<header>
+<header class="bg-red-300">
 
     <div>
         <a href="{{ home_url }}"><img src="{% static "images/logo.png" %}" alt="Logo"></a>
