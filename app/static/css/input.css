@@ -7,5 +7,9 @@
 }
 
 .a-style {
-    @apply my-2 pb-2 border-b border-transparent hover:border-blue hover:border-b-4 text-lg mr-6
+    @apply my-2 pb-2 border-b border-transparent hover:border-blue-600 hover:border-b-4 text-lg mr-6
+}
+
+.link_footer{
+    @apply hover:text-blue-600 hover:underline
 }
