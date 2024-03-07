@@ -14,11 +14,11 @@
         <nav class="flex justify-between items-center">
             <div class="flex space-x-4">
                 {% if user.is_authenticated %}
-                    <a href="{{ request_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Requête</a>
-                    <a href="{{ history_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Historique</a>
-                    <a href="{{ companies_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">Company</a>
+                    <a href="{{ request_url }}" class="link_footer">Requête</a>
+                    <a href="{{ history_url }}" class="link_footer">Historique</a>
+                    <a href="{{ companies_url }}" class="link_footer">Company</a>
                 {% endif %}
-                    <a href="{{ about_url }}" class="text-blue-800 hover:text-blue-300 hover:underline">À propos</a>
+                    <a href="{{ about_url }}" class="link_footer">À propos</a>
             </div>
             <div>
                 <p class="text-base">Quentin Lavallée & Cyril Julliard</p>
