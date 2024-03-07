@@ -11,6 +11,6 @@ pip install -r requirements_api.txt
 
 COPY . /app/
 
-EXPOSE 8000
+EXPOSE 8042
 
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8042"]

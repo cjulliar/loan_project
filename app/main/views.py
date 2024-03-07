@@ -1,4 +1,5 @@
 import json
+import os
 from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 
@@ -27,6 +28,7 @@ class CompaniesListView(LoginRequiredMixin, ListView):
     model = Company
     template_name = "main/companies_page.html"
 
+
 # def company(request, nameCompany):
 #     context = {"nameCompany" : nameCompany}
 #     return render(request, 'main/company_page.html', context=context)
@@ -44,6 +46,7 @@ class CompanyDetailView(LoginRequiredMixin, DetailView):
         requests = Request.objects.filter(company=company)
         context['requests'] = requests
         return context
+
 
 def create_company(request):
     if request.method == "POST":
@@ -70,6 +73,7 @@ class LoanHistoryListView(LoginRequiredMixin, ListView):
     model = Request
     template_name = "main/loan_history_page.html"
 
+
 def loan_request(request):
     if request.method == "POST":
         form = RequestForm(request.POST)
@@ -79,7 +83,7 @@ def loan_request(request):
             try:
                 application = form.cleaned_data
 
-                url = "http://0.0.0.0:8042/predict"
+                url = os.getenv("API_URL")
 
                 headers = {
                     "Accepts": "application/json",

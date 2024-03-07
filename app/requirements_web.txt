@@ -1,0 +1,5 @@
+django<5
+django-dotenv<2
+django-widget-tweaks<2
+whitenoise<7
+requests<3
