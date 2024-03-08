@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+
   web:
     depends_on:
       - postgres_db
@@ -9,13 +10,14 @@ services:
     env_file:
       - ./app/.env
     build: 
-      context: ./app
+      context: ./app/
       dockerfile: Dockerfile
+
   api:
     ports:
       - 8042:8042
     build: 
-      context: ./api
+      context: ./api/
       dockerfile: Dockerfile
     
   postgres_db:
