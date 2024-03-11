@@ -7,29 +7,42 @@
 
 {% if form %}
     <div>
-        <a href="{% url "main:create_company" %}">Si l'entreprise n'est pas présente parmi les choix, veuillez d'abord l'enregistrer en vous rendant sur cette page.</a>
+        <a href="{% url "main:create_company" %}">
+            <button class="button_form" >Ajouter une entreprise</button>
+        </a>
         <form method="post" action="{% url "main:loan_request" %}">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Valider la demande de prêt</button>
+            <ul class="space-y-4 mb-5 mt-5 ">
+                <li class="list_form"><div>{{ form.company.label }} : </div> <div class="formulaire_input">{{ form.company }}</div></li>
+                <li class="list_form"><div>{{ form.bank.label }} : </div> <div class="formulaire_input">{{ form.bank }}</div></li>
+                <li class="list_form"><div>{{ form.bank_state.label }} : </div> <div class="formulaire_input">{{ form.bank_state }}</div></li>
+                <li class="list_form"><div>{{ form.term.label }} : </div> <div class="formulaire_input">{{ form.term }}</div></li>
+                <li class="list_form"><div>{{ form.new_exist.label }} : </div> <div class="formulaire_input">{{ form.new_exist }}</div></li>
+                <li class="list_form"><div>{{ form.rev_line_cr.label }} : </div> <div class="formulaire_input">{{ form.rev_line_cr }}</div></li>
+                <li class="list_form"><div>{{ form.low_doc.label }} : </div> <div class="formulaire_input">{{ form.low_doc }}</div></li>
+                <li class="list_form"><div>{{ form.gr_appv.label }} : </div> <div class="formulaire_input">{{ form.gr_appv }}</div></li>
+                <li class="list_form"><div>{{ form.sba_appv.label }} : </div> <div class="formulaire_input">{{ form.sba_appv }}</div></li>
+                <li class="list_form"><div>{{ form.real_estate.label }} : </div> <div class="formulaire_input">{{ form.real_estate }}</div></li>
+
+            </ul>
+            <button class="button_form" type="submit">Valider la demande de prêt</button>
         </form>
     </div>
 {% endif %}
 
 {% if application %}
-    <div>
-        <p>Entreprise : {{ application.company }}</p>
-        <p>Banque accordant le prêt : {{ application.bank }}</p>
-        <p>Montant du prêt accordé par la banque : {{ application.gr_appv }}$</p>
-        <p>Montant du prêt garanti par la SBA : {{ application.sba_appv }}$</p>
-        <p>Durée du prêt : {{ application.term }} mois</p>
-        <p>Prédiction sur la capacité de l'entreprise à rembourser le prêt :</p>
+    <ul class="space-y-4">
+        <li class="list_form">Entreprise : {{ application.company }}</li>
+        <li class="list_form">Banque accordant le prêt : {{ application.bank }}</li>
+        <li class="list_form">Montant du prêt accordé par la banque : {{ application.gr_appv }}$</li>
+        <li class="list_form">Montant du prêt garanti par la SBA : {{ application.sba_appv }}$</li>
+        <li class="list_form">Durée du prêt : {{ application.term }} mois</li>
         {% if application.status == 0 %}
-            <p>Le modèle prédit que l'entreprise ne serait pas en mesure de rembourser le prêt.</p>
+            <li class="list_form text-red-600">Le modèle prédit que l'entreprise ne serait pas en mesure de rembourser le prêt.</li>
         {% elif application.status == 1 %}
-            <p>Le modèle prédit que l'entreprise serait en mesure de rembourser le prêt.</p>
+            <li class="list_form text-green-600">Le modèle prédit que l'entreprise serait en mesure de rembourser le prêt.</li>
         {% endif %}
-    </div>
+    </ul>
 {% endif %}
 
 {% endblock content %}
