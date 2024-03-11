@@ -323,3 +323,5 @@ package.json
 fonts
 
 app/static/css/output.css
+
+app/staticfiles/
