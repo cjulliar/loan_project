@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const humburger = document.querySelector("#humburger");
     const menu = document.querySelector("#menu");
-
     humburger.addEventListener("click", function () {
         menu.classList.toggle('hidden');
     });
@@ -15,5 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Cacher le menu
             menu.classList.add('hidden');
         }
+    });
+
+    const infoBlocks = document.querySelectorAll('.info-block');
+    infoBlocks.forEach(function(infoBlock) {
+        const detailsDiv = infoBlock.querySelector('.details');
+
+        infoBlock.addEventListener('click', function() {
+            detailsDiv.classList.toggle('hidden');
+        });
     });
 });

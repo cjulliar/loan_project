@@ -1,24 +1,47 @@
 {% extends "base.html" %}
 
+{% block title %}Historique{% endblock title %} 
+
 {% block content %}
-    <h3 class="text-2xl font-bold mt-4 mb-2">Requests</h3>
-    <div class="overflow-x-auto">
-        <table class="w-full border-collapse border">
+    <h1 class="text-blue-800 text-4xl font-bold mb-4">Historique des demandes de prêts</h1>
+
+    <div class="xl:hidden">
+        {% for request in object_list %}
+            <div class="info-block flex flex-row border-collapse border {% cycle 'bg-white' 'bg-gray-200'  %} m-3 pl-2">
+                <ul class="space-y-4 mb-5 mt-5 ">
+                    <li class="list_form"><div>Date : {{ request.formatted_date }}</div></li>
+                    <li class="list_form"><div>Nom : {{ request.company.name }}</div></li>
+                    <div class="details hidden space-y-4">
+                        <li class="list_form"><div>Ville : {{ request.company.city }}</div></li>
+                        <li class="list_form"><div>Banque : {{ request.bank }}, {{ request.get_bank_state_display }}</div></li>
+                        <li class="list_form"><div>Durée du pret : {{ request.term }}</div></li>
+                        <li class="list_form"><div>Crédit renouvelable : {{ request.get_rev_line_cr_display }}</div></li>
+                        <li class="list_form"><div>Montant accordé par SBA : {{ request.sba_appv }}</div></li>
+                        <li class="list_form"><div>Montant accordé par la banque : {{ request.gr_appv }}</div></li>
+                    </div>
+                    <li class="list_form"><div>Status : {{ request.get_status_display }}</div></li>
+
+                </ul>
+                
+            </div>
+            
+        {% endfor %}
+
+    </div>
+    <div class=" hidden xl:flex overflow-x-auto">
+        <table class="w-full border-collapse border ">
             <thead>
                 <tr class="bg-gray-400 text-white">
                     <th class="tab_style">Date</th>
                     <th class="tab_style">Nom de l'entreprise</th>
                     <th class="tab_style">Ville de l'entreprise</th>
-                    <th class="tab_style">Nouvelle entreprise</th>
                     <th class="tab_style">Banque</th>
-                    <th class="py-2 px-4">État de la banque</th>
-                    <th class="py-2 px-4">Durée du prêt</th>
-                    <th class="py-2 px-4">Crédit renouvelable</th>
-                    <th class="py-2 px-4">Demande faite en 1 page</th>
-                    <th class="py-2 px-4">Montant accordé par SBA</th>
-                    <th class="py-2 px-4">Montant accordé par Banque</th>
-                    <th class="py-2 px-4">Lié à l'immobilier</th>
-                    <th class="py-2 px-4">Status</th>
+                    <th class="tab_style">État de la banque</th>
+                    <th class="tab_style">Durée du prêt</th>
+                    <th class="tab_style">Crédit renouvelable</th>
+                    <th class="tab_style">Montant accordé par SBA</th>
+                    <th class="tab_style">Montant accordé par Banque</th>
+                    <th class="tab_style">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,16 +50,13 @@
                         <td class="tab_style">{{ request.formatted_date }}</td>
                         <td class="tab_style">{{ request.company.name }}</td>
                         <td class="tab_style">{{ request.company.city }}</td>
-                        <td class="py-2 px-4">{{ request.get_new_exist_display }}</td>
-                        <td class="py-2 px-4">{{ request.bank }}</td>
-                        <td class="py-2 px-4">{{ request.get_bank_state_display }}</td>
-                        <td class="py-2 px-4">{{ request.term }}</td>
-                        <td class="py-2 px-4">{{ request.get_rev_line_cr_display }}</td>
-                        <td class="py-2 px-4">{{ request.get_low_doc_display }}</td>
-                        <td class="py-2 px-4">{{ request.sba_appv }}</td>
-                        <td class="py-2 px-4">{{ request.gr_appv }}</td>
-                        <td class="py-2 px-4">{{ request.get_real_estate_display }}</td>
-                        <td class="py-2 px-4">{{ request.get_status_display }}</td>
+                        <td class="tab_style">{{ request.bank }}</td>
+                        <td class="tab_style">{{ request.get_bank_state_display }}</td>
+                        <td class="tab_style">{{ request.term }}</td>
+                        <td class="tab_style">{{ request.get_rev_line_cr_display }}</td>
+                        <td class="tab_style">{{ request.sba_appv }}</td>
+                        <td class="tab_style">{{ request.gr_appv }}</td>
+                        <td class="tab_style">{{ request.get_status_display }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
