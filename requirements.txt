@@ -13,6 +13,7 @@ django-dotenv<2
 django-livereload-server<1
 django-widget-tweaks<2
 requests<3
+django-tailwind[reload]
 
 scikit-learn<2
 fastapi<1

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <ul class="list-disc mt-4"> 
-        <li class="mb-2">Nom de l'entreprise:  {{ company.name }}</li>
-        <li class="mb-2">Ville du siège:       {{ company.city }}</li>
-        <li class="mb-2">Etat du siège:        {{ company.get_state_display }}</li>
-        <li class="mb-2">Code postal du siège: {{ company.zip }}</li>
-        <li class="mb-2">Code du secteur d'activité: {{ company.naics }}</li>
-        <li class="mb-2">Nombre d'employés:    {{ company.num_employees }}</li>
-        <li class="mb-2">Franchise code:       {{ company.franchise_code }}</li>
-        <li class="mb-2">Type d'environnement: {{ company.get_urban_rural_display }}</li>
+    <ul class="space-y-4 mb-5 mt-5"> 
+        <li class="list_form">Nom de l'entreprise:  {{ company.name }}</li>
+        <li class="list_form">Ville du siège:       {{ company.city }}</li>
+        <li class="list_form">Etat du siège:        {{ company.get_state_display }}</li>
+        <li class="list_form">Code postal du siège: {{ company.zip }}</li>
+        <li class="list_form">Code du secteur d'activité: {{ company.naics }}</li>
+        <li class="list_form">Nombre d'employés:    {{ company.num_employees }}</li>
+        <li class="list_form">Franchise code:       {{ company.franchise_code }}</li>
+        <li class="list_form">Type d'environnement: {{ company.get_urban_rural_display }}</li>
     </ul><br>
 
     <h3 class="text-2xl font-bold mt-4 mb-2">Requests</h3>

@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-ENV PYTHONBUFFERED 1
+ENV PYTHONUNBUFFERED 1
 
 COPY requirements_web.txt /app/
 

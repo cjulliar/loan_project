@@ -12,4 +12,5 @@ urlpatterns = [
     path('loan_history/', views.LoanHistoryListView.as_view(), name='loan_history'),
     path('loan_request/', views.loan_request, name='loan_request'),
     path('signup/', views.SignupView.as_view(), name='signup'),
+
 ]
