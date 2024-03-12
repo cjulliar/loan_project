@@ -325,3 +325,5 @@ fonts
 app/static/css/output.css
 
 app/staticfiles/
+
+deploy.yaml
