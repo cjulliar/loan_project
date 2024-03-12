@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="bg-white p-6">
-        <h2 class="text-blue-800 text-2xl font-bold mb-4">Entreprises :</h2>
+        <h1 class="text-blue-800 text-2xl font-bold mb-4">Entreprises :</h1>
         
-        <ul class="list-disc ml-6">
+        <ul class="lspace-y-4 mb-5 mt-5">
             {% for company in object_list %}
                 <li class="mb-2">
-                    <a href="{% url 'main:company' pk=company.id %}" class="hover:text-blue-600 hover:underline">
+                    <a href="{% url 'main:company' pk=company.id %}" class="hover:text-blue-600 hover:underline list_form">
                         {{ company.name }} - {{ company.get_state_display }}
                     </a>
                 </li>

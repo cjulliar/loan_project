@@ -1,19 +1,51 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <ul class="space-y-4 mb-5 mt-5"> 
-        <li class="list_form">Nom de l'entreprise:  {{ company.name }}</li>
-        <li class="list_form">Ville du siège:       {{ company.city }}</li>
-        <li class="list_form">Etat du siège:        {{ company.get_state_display }}</li>
-        <li class="list_form">Code postal du siège: {{ company.zip }}</li>
-        <li class="list_form">Code du secteur d'activité: {{ company.naics }}</li>
-        <li class="list_form">Nombre d'employés:    {{ company.num_employees }}</li>
-        <li class="list_form">Franchise code:       {{ company.franchise_code }}</li>
-        <li class="list_form">Type d'environnement: {{ company.get_urban_rural_display }}</li>
-    </ul><br>
+    <div class="md:flex">
+        <div class="md:w-1/2">
+            <h3 class="text-blue-800 text-4xl font-bold mb-4">Informations sur l'entreprise</h3>     
 
-    <h3 class="text-2xl font-bold mt-4 mb-2">Requests</h3>
-    <div class="overflow-x-auto">
+            <ul class="space-y-4 mb-5 mt-5"> 
+                <li class="list_form">Nom de l'entreprise:  {{ company.name }}</li>
+                <li class="list_form">Ville du siège:       {{ company.city }}</li>
+                <li class="list_form">Etat du siège:        {{ company.get_state_display }}</li>
+                <li class="list_form">Code postal du siège: {{ company.zip }}</li>
+                <li class="list_form">Code du secteur d'activité: {{ company.naics }}</li>
+                <li class="list_form">Nombre d'employés:    {{ company.num_employees }}</li>
+                <li class="list_form">Franchise code:       {{ company.franchise_code }}</li>
+                <li class="list_form">Type d'environnement: {{ company.get_urban_rural_display }}</li>
+            </ul>
+        </div>
+    
+        <div class="md:w-1/2">
+            <h3 class="text-blue-800 text-4xl font-bold mb-4">Historique des requêtes de l'entreprise</h3>     
+
+            {% for request in requests %}
+                <div class="info-block flex flex-row border-collapse border {% cycle 'bg-white' 'bg-gray-200'  %} m-3 pl-2">
+                    <ul class="space-y-4 mb-5 mt-5 ">
+                        <li class="list_form"><div>Date : {{ request.formatted_date }}</div></li>
+                        <li class="list_form"><div>Nom : {{ request.company.name }}</div></li>
+                        <div class="details hidden space-y-4">
+                            <li class="list_form"><div>Ville : {{ request.company.city }}</div></li>
+                            <li class="list_form"><div>Banque : {{ request.bank }}, {{ request.get_bank_state_display }}</div></li>
+                            <li class="list_form"><div>Durée du pret : {{ request.term }}</div></li>
+                            <li class="list_form"><div>Crédit renouvelable : {{ request.get_rev_line_cr_display }}</div></li>
+                            <li class="list_form"><div>Montant accordé par SBA : {{ request.sba_appv }}</div></li>
+                            <li class="list_form"><div>Montant accordé par la banque : {{ request.gr_appv }}</div></li>
+                        </div>
+                        <li class="list_form"><div>Status : {{ request.get_status_display }}</div></li>
+    
+                    </ul>
+                    
+                </div>
+                
+            {% endfor %}
+        </div>
+    </div>
+        
+    
+
+    {% comment %} <div class="overflow-x-auto">
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-400 text-white">
@@ -46,5 +78,5 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div> {% endcomment %}
 {% endblock %}
