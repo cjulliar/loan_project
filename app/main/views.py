@@ -6,6 +6,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+import django.core.mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy

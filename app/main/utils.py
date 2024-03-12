@@ -1,7 +1,3 @@
-import json
-import os
-from requests import Request, Session
-
 state_names = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
     "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -57,41 +53,3 @@ MIS_STATUS_CHOICES = [
     ("0", "Incapacité de rembourser"),
     ("1", "Capable de rembourser")
 ]
-
-
-def api_call(application):
-
-    url = "http://0.0.0.0:8042/predict"
-
-    headers = {
-        "Accepts": "application/json",
-    }
-
-    session = Session()
-    session.headers.update(headers)
-
-    company = application["company"]
-
-    feature_inputs = {
-    'State': company["state"],
-    'Bank': application["bank"],
-    'BankState': application["bank_state"],
-    'Term': application["term"],
-    'NoEmp': company["num_employees"],
-    'NewExist': application["new_exist"],
-    'FranchiseCode': company["franchise_code"],
-    'UrbanRural': company["urban_rural"],
-    'RevLineCr': application["rev_line_cr"],
-    'LowDoc': application["low_doc"],
-    'GrAppv': application["gr_appv"],
-    'SBA_Appv': application["sba_appv"],
-    'Zip2': company["zip"],
-    'NAICS2': company["naics"],
-    'RealEstate': application["real_estate"]
-    }
-
-    features = json.dumps(feature_inputs)
-    response = session.post(url, data=features)
-    result = json.loads(response.text)
-
-    return result

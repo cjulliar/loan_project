@@ -29,22 +29,13 @@ class Request(models.Model):
     bank = models.CharField(max_length=100, blank=False, null=False)
     bank_state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=False, null=False)
     term = models.PositiveIntegerField(validators=[MaxValueValidator(1000)], blank=False, null=False)
-    # num_employees = models.PositiveIntegerField(default=company_data("num_employees")) 
     new_exist = models.CharField(max_length=8, choices=NEW_EXIST_CHOICES, blank=False, null=False)
-    # franchise_code = models.PositiveIntegerField() 
-    # urban_rural = models.BinaryField() 
     rev_line_cr = models.CharField(max_length=1, choices=REV_LINE_CHOICES, blank=False, null=False)
     low_doc = models.CharField(max_length=1, choices=LOW_DOC_CHOICES, blank=False, null=False)
     gr_appv = models.PositiveIntegerField(blank=False, null=False)
     sba_appv = models.PositiveIntegerField(blank=False, null=False)
-    # zip = models.PositiveIntegerField() 
-    # naics = models.PositiveIntegerField() 
     real_estate = models.CharField(max_length=1, choices=REAL_ESTATE_CHOICES, blank=False, null=False)
     status = models.CharField(max_length=1, choices=MIS_STATUS_CHOICES, blank=True, null=True)
 
-    def company_data(self, column):
-        company = self.company
-        return company[column]
-    
     def formatted_date(self):
         return self.date.strftime('%d/%m/%Y')
