@@ -5,44 +5,28 @@
 {% block title %}Créer un compte{% endblock title %}
 
 {% block content %}
-    <form method="post">
+    <form method="post" action="{% url "main:signup" %}">
         {% csrf_token %}
-        {{form}}
-        <button type="submit">Créer un compte</button>
+        <ul class="space-y-4 mb-5 mt-5">
+            <li class="list_form">
+                <div>Nom d'utilisateur : </div>
+                <div class="formulaire_input">{{ form.username }}</div>
+            </li>              
+            <li class="list_form">
+                <div>Email : </div>
+                <div class="formulaire_input">{{ form.email }}</div>
+            </li>              
+            <li class="list_form">
+                <div>Mot de passe : </div>
+                <div class="formulaire_input">{{ form.password1 }}</div>
+            </li>
+            <li>Votre mot de passe doit contenir au moins 8 caractères (il ne peut pas être entièrement numérique).</li>              
+            <li class="list_form">
+                <div>Confirmer le mot de passe : </div>
+                <div class="formulaire_input">{{ form.password2 }}</div>
+            </li>  
+        </ul>
+        <button class="button_form" type="submit">Créer un compte</button>
     </form>
+
 {% endblock %}
-
-
-
-<div class="max-w-md mx-auto my-10">
-    <h2 class="text-2xl font-bold mb-4">Enregistrement</h2>
-
-    <form method="POST" action="{% url "main:signup" %}">
-        {% csrf_token %}
-
-        <div class="mb-4">
-            <label for="id_name" class="block text-gray-700 text-sm font-bold mb-2">Nom d'utilisateur :</label>
-            {{ form.username }}
-        </div>
-
-        <div class="mb-4">
-            <label for="id_email" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
-            {{ form.email }}
-        </div>
-
-        <div class="mb-4">
-            <label for="id_password1" class="block text-gray-700 text-sm font-bold mb-2">Mot de passe :</label>
-            {{ form.password1 }}
-        </div>
-
-        <div class="mb-4">
-            <label for="id_password2" class="block text-gray-700 text-sm font-bold mb-2">Confirmer le mot de passe :</label>
-            {{ form.password2 }}
-        </div>
-
-        <div class="mb-6">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">S'inscrire</button>
-        </div>
-
-    </form>
-</div>

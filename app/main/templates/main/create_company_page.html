@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Demande de prêt{% endblock title %}
+{% block title %}Enregistrement d'entreprise{% endblock title %}
 
 {% block content %}
 
@@ -9,14 +9,38 @@
     <form method="post" action="{% url "main:create_company" %}">
         {% csrf_token %}
         <ul class="space-y-4 mb-5 mt-5 ">
-            <li class="list_form"><div>{{ form.name.label }} : </div> <div class="formulaire_input">{{ form.name }}</div></li>
-            <li class="list_form"><div>{{ form.city.label }} : </div> <div class="formulaire_input">{{ form.city }}</div></li>
-            <li class="list_form"><div>{{ form.state.label }} : </div> <div class="formulaire_input">{{ form.state }}</div></li>
-            <li class="list_form"><div>{{ form.zip.label }} : </div> <div class="formulaire_input">{{ form.zip }}</div></li>
-            <li class="list_form"><div>{{ form.naics.label }} : </div> <div class="formulaire_input">{{ form.naics }}</div></li>
-            <li class="list_form"><div>{{ form.num_employees.label }} : </div> <div class="formulaire_input">{{ form.num_employees }}</div></li>
-            <li class="list_form"><div>{{ form.franchise_code.label }} : </div> <div class="formulaire_input">{{ form.franchise_code }}</div></li>
-            <li class="list_form"><div>{{ form.urban_rural.label }} : </div> <div class="formulaire_input">{{ form.urban_rural}}</div></li>
+            <li class="list_form">
+                <div>{{ form.name.label }} : </div>
+                <div class="formulaire_input">{{ form.name }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.city.label }} : </div>
+                <div class="formulaire_input">{{ form.city }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.state.label }} : </div>
+                <div class="formulaire_input">{{ form.state }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.zip.label }} : </div>
+                <div class="formulaire_input">{{ form.zip }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.naics.label }} : </div>
+                <div class="formulaire_input">{{ form.naics }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.num_employees.label }} : </div>
+                <div class="formulaire_input">{{ form.num_employees }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.franchise_code.label }} : </div>
+                <div class="formulaire_input">{{ form.franchise_code }}</div>
+            </li>
+            <li class="list_form">
+                <div>{{ form.urban_rural.label }} : </div>
+                <div class="formulaire_input">{{ form.urban_rural}}</div>
+            </li>
         </ul>
         <button class="button_form" type="submit">Enregistrer l'entreprise</button>
     </form>

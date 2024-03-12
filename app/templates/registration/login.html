@@ -6,21 +6,21 @@
 
 {% block content %}
 
+<div>
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
-        <button type="submit">Se connecter</button>
-        <input type="hidden" name="next" value="{{ next }}">
-        
+        <ul class="space-y-4 mb-5 mt-5">
+            <li class="list_form">
+                <div>Nom d'utilisateur : </div>
+                <div class="formulaire_input">{{ form.username }}</div>
+            </li>            
+            <li class="list_form">
+                <div>Mot de passe : </div>
+                <div class="formulaire_input">{{ form.password }}</div>
+            </li>
+        </ul>
+        <button class="button_form" type="submit">Se connecter</button>
     </form>
+</div>
 
 {% endblock content %} 
