@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator
 from django.db import models
 
-from .utils import STATE_CHOICES, NEW_EXIST_CHOICES, URBAN_RURAL_CHOICES, REV_LINE_CHOICES, LOW_DOC_CHOICES, REAL_ESTATE_CHOICES, MIS_STATUS_CHOICES
+from .utils import STATE_CHOICES, NEW_EXIST_CHOICES, NAICS_CHOICES, URBAN_RURAL_CHOICES, REV_LINE_CHOICES, LOW_DOC_CHOICES, REAL_ESTATE_CHOICES, MIS_STATUS_CHOICES
 
 
 class User(AbstractUser):
@@ -14,7 +14,7 @@ class Company(models.Model):
     city = models.CharField(max_length=100, blank=False, null=False)
     state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=False, null=False)
     zip = models.PositiveIntegerField(validators=[MaxValueValidator(99)], blank=False, null=False)
-    naics = models.PositiveIntegerField(validators=[MaxValueValidator(99)], blank=False, null=False)
+    naics = models.CharField(max_length=2, choices=NAICS_CHOICES, blank=False, null=False)
     num_employees = models.PositiveIntegerField(blank=False, null=False)
     franchise_code = models.PositiveIntegerField(validators=[MaxValueValidator(99999)], blank=False, null=False)
     urban_rural = models.CharField(max_length=5, choices=URBAN_RURAL_CHOICES, blank=False, null=False)

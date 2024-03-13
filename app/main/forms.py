@@ -18,7 +18,7 @@ class CompanyForm(forms.ModelForm):
             "city": "Ville où se situe l'entreprise",
             "state": "État où se situe l'entreprise",
             "zip": "Code postal de l'entreprise (deux premiers chiffres)",
-            "naics": "Code du secteur d'activité de l'entreprise (deux premiers chiffres)",
+            "naics": "Secteur d'activité de l'entreprise",
             "num_employees": "Nombre d'employés de l'entreprise",
             "franchise_code": "Code indiquant la franchise de l'entreprise (0 si non franchisé)",
             "urban_rural": "Type d'environnement où se situe l'entreprise",
