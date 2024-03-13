@@ -4,6 +4,8 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get update && apt-get install -y netcat-openbsd
+
 COPY requirements_web.txt /app/
 
 
