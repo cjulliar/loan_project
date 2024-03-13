@@ -5,9 +5,9 @@
 {% block content %}
     <h1 class="text-blue-800 text-4xl font-bold mb-4">Historique des demandes de prêts</h1>
 
-    <div class="xl:hidden">
+    <div class="xl:hidden w-10/12">
         {% for request in object_list %}
-            <div class="info-block flex flex-row border-collapse border {% cycle 'bg-white' 'bg-gray-200'  %} m-3 pl-2">
+            <div class=" hover:cursor-pointer info-block flex flex-row border-collapse border {% cycle 'bg-white' 'bg-gray-200'  %} m-3 pl-2">
                 <ul class="space-y-4 mb-5 mt-5 ">
                     <li class="list_form"><div>Date : {{ request.formatted_date }}</div></li>
                     <li class="list_form"><div>Nom : {{ request.company.name }}</div></li>
@@ -45,7 +45,7 @@
             </thead>
             <tbody>
                 {% for request in object_list %}
-                    <tr class="{% cycle 'bg-white' 'bg-gray-200'  %}">
+                    <tr class="{% cycle 'bg-white' 'bg-gray-200' %}">
                         <td class="tab_style">{{ request.formatted_date }}</td>
                         <td class="tab_style">{{ request.company.name }}</td>
                         <td class="tab_style">{{ request.company.city }}</td>
